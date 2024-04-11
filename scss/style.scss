@@ -1,0 +1,16 @@
+@charset "utf-8";
+@import 'reset';
+.todoList{
+    svg{
+        width: 24px;
+        height: 24px;
+    }
+
+    li{
+        &.done{
+            text-decoration: line-through;
+        }
+    }
+}
+
+

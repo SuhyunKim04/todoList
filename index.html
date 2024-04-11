@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Today - What to do?</h1>
+    </header>
+
+    <form id="task_form">
+        <input type="text" placeholder="Please write down what you need to do" name="task">
+        <button type="submit"><b>Add task</b></button>
+    </form>
+
+    <ul class="todoList">
+        <li class="done"> 
+            <input type="checkbox" id="1">
+            <label for="1">world</label>
+            <button type="button" class="removeTask">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M17.25 17.25L6.75 6.75" 
+                    stroke="#2e2f50" stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+                    <path d="M17.25 6.75L6.75 17.25"
+                    stroke="#2e2f50" stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+            </button>
+        </li>
+    </ul>
+    <script src="./todo.js"></script>
+</body>
+</html>
