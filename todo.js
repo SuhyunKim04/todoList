@@ -2,11 +2,28 @@
 const fm = document.getElementById('task_form');
 const input= fm.task
 const todoList = document.querySelector('.todoList');
+const statsList = document.querySelector('.stats-list')
+const remaning = statsList.querySelector('.remaning-count')
+const done = statsList.querySelector('.done-count')
+const total = statsList.querySelector('.total-count')
+
+
+//isdone 로컬에서 ture인애
+
+
+
+
 
 let todos = [];
 const Key_todo = 'todoList'
 getDB();
 
+function getCount() {
+    total.innerHTML = todos.length;
+    let all =  todos.filter((list) => list.isDone === true).length
+    done.innerHTML = all
+    remaning.innerHTML = todos.length - all;
+}   
 function createLi(newTodo) {
     const Li = document.createElement('li') 
     Li.id = newTodo.id;
@@ -32,6 +49,7 @@ Btn.innerHTML = Btncontent
 Btn.addEventListener('click', removeTask)
 Li.appendChild(Btn)
 todoList.appendChild(Li)
+getCount();
 }
 
 
@@ -46,6 +64,7 @@ function getDB(){
     }else {
         todos = []
     }
+    
 }
 
 function removeTask(item){
@@ -54,8 +73,11 @@ function removeTask(item){
     todos = todos.filter((todo) => todo.id !== parseInt(curId));
     document.getElementById(curId).remove();
     saveDB(todos)
+    getCount();
     
 }
+
+
 
 todoList.addEventListener('input', (e) => { 
     const taskId = e.target.closest('li').id;  
@@ -91,7 +113,7 @@ function updateTask(taskId, el) {
     }
     
     saveDB(todos);
-    
+    getCount();
 }
 function addTask(e) {
     e.preventDefault()
@@ -107,8 +129,11 @@ function addTask(e) {
     todos.push(newTodo)
 
     saveDB(todos);
+    getCount();
 }
 
 fm.addEventListener('submit',addTask);
 
+
+getCount();
 
