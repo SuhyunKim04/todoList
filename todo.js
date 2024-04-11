@@ -3,7 +3,22 @@ const fm = document.getElementById('task_form');
 const input= fm.task
 const todoList = document.querySelector('.todoList');
 
-const taskList = [];
+let taskList = [];
+const Key_todo = 'todoList'
+getDB();
+
+function saveDB() {
+    localStorage.setItem(Key_todo, JSON.stringify(todoList))
+}
+
+function getDB(){
+    str = localStorage.getItem(Key_todo);
+    if(str) {
+        taskList = JSON.parse(str);
+    }
+}
+
+
 
 fm.addEventListener('submit',(e) => {
     e.preventDefault()
@@ -35,5 +50,8 @@ Li.appendChild(Div)
 Btn.innerHTML = Btncontent
 Li.appendChild(Btn)
 todoList.appendChild(Li)
+
+
+saveDB();
 })
 
