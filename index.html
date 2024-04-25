@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        .hide {
+            color:red;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,30 +19,41 @@
     </header>
 
     <form id="task_form">
-        <input type="text" placeholder="Please write down what you need to do" name="task">
-        <button type="submit"><b> + Add task</b></button>
+       <input type="text" name="name" placeholder="수강생이름">
+       <input type="email" name="email" placeholder="이메일">
+       <select name="subject">
+        <option value="html">html</option>
+        <option value="css">css</option>
+        <option value="scss">scss</option>
+        <option value="javascript">javascript</option>
+       </select>
+        <button type="submit"><b>Add User</b></button>
     </form>
 
-    <ul class="stats-list">
-        <li>
-            <strong>Remaining</strong>
-            <span class="remaning-count">0</span>
-        </li>
-        <li>
-            <strong>Done</strong>
-            <span class="done-count">0</span>
-        </li>
-        <li>
-            <strong>Total</strong>
-            <span class="total-count">0</span>
-        </li>
-    </ul>
+    <button class="btn" type="button"><span class="material-symbols-outlined">search</span></button>
+    
+    <section class="search open">
+        <form class="search_form">
+            <input type="search" required name="search">
+            <button type="submit">search</button>
+            <button type="button" class="close"><span class="material-symbols-outlined">close</span></button>
+        </form>
+    </section>
 
 
     
-    <ul class="todoList">
+    <ul class="userList">
         
     </ul>
-    <script src="./todo.js"></script>
+
+    <template data-item>
+        <li data-name>
+            <strong data-name></strong>
+            <span data-email></span>
+            <p data-subject></p>
+        </li>
+    </template>
+
+    <script src="./user.js"></script>
 </body>
 </html>

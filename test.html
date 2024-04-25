@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="list">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+    </ul>
+
+    <script>
+        const list = document.querySelector('.list')
+        let arr = list.querySelectorAll('li')
+        arr.forEach(li => {
+            console.log(li)
+            console.log(li.textContent)
+        });
+    </script>
+</body>
+</html>

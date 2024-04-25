@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide {
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <h1>FAQ</h1>
+    <form name="search">
+        <input type="search" required name="input" data-search>
+        <button type="submit">Search</button>
+    </form>
+    <div class="user-cards" data-user-cards-container></div>
+    <template data-user-template>  
+            <div class="card">
+                <strong class="header" data-header>My name</strong>
+                <p class="email" data-body>email@gmail.com</p>
+            </div> 
+    </template>
+    <script>
+const userCardTemplate = document.querySelector('[data-user-template]')
+const userCardContainer = document.querySelector('[data-user-cards-container')
+const searchInput = document.querySelector('[data-search')
+
+let users = []
+
+searchInput.addEventListener('input', e => {
+    const value = e.target.value; 
+    let regex = new RegExp(`(${value})`, 'gi')  
+    users.forEach( user => {
+        const isVisible = regex.test(user.name) || regex.test(user.email)
+        // const isVisible = user.name.includes(regex) || user.email.includes(regex); 
+        user.element.classList.toggle('hide', !isVisible)
+        
+    })
+})
+
+
+
+fetch('https://jsonplaceholder.typicode.com/users')
+.then(res => res.json())
+.then(data => {
+   users = data.map(user => {
+        const card = userCardTemplate.content.cloneNode(true).children[0];
+        const header = card.querySelector('[data-header]')
+        const body = card.querySelector('[data-body]')
+        header.textContent = user.name;
+        body.textContent = user.email; 
+        userCardContainer.append(card);
+        return { name:user.name, email :user.email, element : card}
+    })
+})
+    </script>
+</body>
+</html>
