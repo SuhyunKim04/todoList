@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            const lis = ['apple','apple mango','banana','melon','berry banana']
+        </code>
+    </pre>
+
+    <form name="myForm">
+        <input type="search" placeholder="input text" required name="word">
+        <button type="submit">Search</button>
+    </form>
+    <p class="result"></p>
+    <script>
+        const fm = document.forms.myForm;
+        const lis = ['apple','apple mango','banana','melon','berry banana']
+        const p =document.querySelector('.result')
+
+
+        fm.addEventListener('submit', searchFruit); 
+        function searchFruit(e) {
+            e.preventDefault();
+            let word = fm.word.value;
+            let regExp = new RegExp(word, 'i');
+
+            let result = lis.filter( data => regExp.test(data) ); 
+            
+            
+            let arr = []
+
+            lis.forEach( (li,i) => {
+               if( regExp.test(li)) {
+                 arr.push(i)
+                 li.classList.add('active')
+               } else {
+                 li.classList.remove('active')
+               }
+            })
+
+            console.log('arr :', arr) 
+            
+            p.innerHTML = `I found ${result}`
+        }
+
+        
+    </script>
+</body>
+</html>

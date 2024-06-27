@@ -80,3 +80,9 @@ function createLi(user) {
 
    list.appendChild(Li)
 }
+
+
+let str3 = 'you3made3it';
+
+console.log(str3.indexOf('m'))
+console.log(str3.length)
